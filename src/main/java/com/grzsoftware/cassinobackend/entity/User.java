@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "users")
@@ -15,7 +15,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(name = "username", unique = true, nullable = false)
     @NotNull(message = "username must not be null")
@@ -38,12 +38,12 @@ public class User {
 
     @Column(name = "birth_date", nullable = false)
     @NotNull(message = "birth date must not be null")
-    private Date birthDate;
+    private LocalDate birthDate;
 
     @Column(name = "balance")
     private double balance;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "adress_id", referencedColumnName = "id")
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address address;
 }

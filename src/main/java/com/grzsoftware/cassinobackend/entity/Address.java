@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "adress")
+@Table(name = "addresses")
 public class Address {
 
     @Id
@@ -27,6 +27,6 @@ public class Address {
     @Column(name = "country", nullable = false)
     private String country;
 
-    @OneToOne(mappedBy = "adress")
+    @OneToOne(mappedBy = "address")
     private User user;
 }
